@@ -1,28 +1,29 @@
+import React from "react";
 import { Col, Container, Row, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import SignupForm from "../components/SignupForm";
+import LoginForm from "../components/LoginForm";
 
-const SignupPage = () => {
+const LoginPage = () => {
   return (
     <Container>
       <Row className="d-flex align-items-center justiy-content-center vh-100">
         <Col>
-          <Stack className="shadow-lg border rounded p-4">
-            <h1>Join Our App!!</h1>
+          <Stack className="shadow-lg border rounded p-4 d-flex align-items-center">
+            <h1>Welcome Back!!</h1>
             <p>Manage your income and expenses</p>
-            <p>Track Your Fincance</p>
+            <p>Track Your Finance</p>
           </Stack>
         </Col>
 
         {/* SignUp Form */}
         <Col>
           <Stack className="shadow-lg border rounded p-4">
-            <h1>Sign Up</h1>
-            {/* SignUp Form */}
-            <SignupForm />
+            <h1>Login</h1>
+            {/* login Form */}
+            <LoginForm />
 
-            <p>Already have account?</p>
-            <Link to="/login">Login</Link>
+            <p>Don't have account?</p>
+            <Link to="/signup">Sign Up</Link>
           </Stack>
         </Col>
       </Row>
@@ -30,4 +31,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default LoginPage;

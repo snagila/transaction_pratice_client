@@ -1,6 +1,8 @@
 import { Button, Form } from "react-bootstrap";
 import CustomInput from "./CustomInput";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { createUser } from "../axios/userAxios";
 const initialFormData = {
   name: "",
   email: "",
@@ -18,11 +20,28 @@ const SignupForm = () => {
       [name]: value,
     });
   };
+
   // Form Submit
-  const handleOnSumbit = (e) => {
+  const handleOnSumbit = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
     // Logic for Signup
+    // call axios to make api result
+    const result = await createUser(formData);
+    setFormData(initialFormData);
+    // assume error
+    if (result.status === "error") {
+      toast.error(result.message);
+      return;
+    }
+
+    // success
+    toast.success(result.message);
   };
+
   return (
     <Form onSubmit={handleOnSumbit}>
       <CustomInput
@@ -65,7 +84,7 @@ const SignupForm = () => {
           type: "password",
           name: "confirmPassword",
           placeholder: "Confirm your Password",
-          calue: confirmPassword,
+          value: confirmPassword,
           required: true,
         }}
       />
