@@ -8,7 +8,7 @@ const TransActionPage = () => {
   return (
     <>
       <Container>
-        <TopNavbar userName={user.name}/>
+        <TopNavbar userName={user.name} />
       </Container>
     </>
   );

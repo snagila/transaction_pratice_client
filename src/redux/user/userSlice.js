@@ -13,7 +13,11 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setIsAunticated: (state, { payload }) => {
+    // setIsAunticated: (state, { payload }) => {
+    //   state.isAuthenticated = payload;
+    // },
+    setIsAunticated: (state, action) => {
+      const { payload } = action;
       state.isAuthenticated = payload;
     },
     setUser: (state, action) => {
